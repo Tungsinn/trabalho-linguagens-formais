@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    height: 65px;
+    background-color: #0093DD;
+    text-align: center;
+}
+
+h1{
+    padding: 10px;
+}
+
+.botoes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px;
+}
+
+button{
+    margin: 15px;
+    padding: 12px;
+    width: 250px;
+    background-color: #96d1ee;
+}
+
+button:focus{
+    outline: none;
+}
+
+button:hover{
+    background-color: #0093DD;
+  }
+
+
+footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 0px;
+    background-color: #96d1ee;
+}
