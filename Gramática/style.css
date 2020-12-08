@@ -27,6 +27,19 @@ button{
     background-color: #0093DD;
 }
 
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.gramatica{
+    width: 50%;
+}
+
+.testGramatica{
+    width: 50%;
+}
+
 footer{
     display: flex;
     flex-direction: row;
