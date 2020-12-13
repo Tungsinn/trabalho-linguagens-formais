@@ -18,6 +18,13 @@ a {
     text-decoration: none;
 }
 
+#principal {
+    margin-top: 275px;
+    text-align: center;
+}
+
+/*************** TIPOGRAFIA **************/
+
 h1 {
     margin-top: 18px;
     margin-right: 335px;
@@ -26,48 +33,3 @@ h1 {
     text-transform: uppercase;
 
 }
-
-#principal {
-    margin-top: 275px;
-    text-align: center;
-}
-
-
-/*
-.expInput{
-    width: 40%;
-    padding: 5px;
-    margin: 10px;
-}
-
-label{
-    align-items: center;
-}
-
-#exp{
-    width: 250px;
-    height: 20px;
-    align-items: center;
-}
-
-.test-Input{
-    width: 40%;
-    padding: 5px;
-    margin: 10px;
-}
-
-#test{
-    width: 250px;
-    height: 20px;
-}
-
-.resul{
-    height: 150px;
-    background-color: #96d1ee;
-    width: 40%;
-    padding: 5px;
-    margin: 10px;
-}
-
-*/
-
