@@ -3,16 +3,17 @@ const testarExp = document.getElementById('testaExpressao') //botão
 const palavra = document.getElementById('test')    // String de Entrada
 
 function validarExp(){
-    const resultado = document.getElementById('resul')
     const regex = new RegExp(expressao.value)
 
     if(regex.test(palavra.value)){
-        resultado.textContent = "Expressão Valida"
+        palavra.style.background = "#6fc155"
+        palavra.style.color = "#034006"
+
     } 
     else{
-        resultado.textContent = "Expressão Invalida"
+        palavra.style.background = "#c15d55"
+        palavra.style.color = "#400803"
     }
-
 }
 
 testarExp.addEventListener('click', validarExp)
