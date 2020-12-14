@@ -23,6 +23,11 @@ a {
     text-align: center;
 }
 
+.col-md-6 {
+    float: none;
+    margin: auto;
+}
+
 /*************** TIPOGRAFIA **************/
 
 h1 {
