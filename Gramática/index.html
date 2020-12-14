@@ -27,9 +27,8 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-transparente">
             <div class="container">
-                <a href="../index.html" class="btn btn-md btn-outline-light">
-                    <i class="fa fa-arrow-left text-white"></i>
-                     Voltar
+                <a href="../index.html" class="btn btn-lg btn-outline-light" data-toggle="tooltip" data-placement="top" title="Voltar">
+                    <i class="fa fa-arrow-left"></i>
                 </a>
 
                 <h1>Gramáticas Regulares</h1>
@@ -56,6 +55,8 @@
                         </div>
                     </form>
 
+                    <!-- Essa div tava aqui pra receber o clone da div #origim, por isso que o botão e o outro
+                    input ficavam embaixo automaticamente. Mas pode fazer do teu jeito mesmo -->
                     <form id="destino"></form>
                     
                     <button type="button" class="mt-2 btn btn-outline-dark d-block" style="width:240px" onlick="addInput()">+</button>
@@ -70,8 +71,10 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 arvore">
-
+                <div class="col-md-6">
+                    <div id="arvore">
+                        
+                    </div>
                 </div>
 
             </div>
