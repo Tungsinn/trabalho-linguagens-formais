@@ -38,12 +38,29 @@
     </header>
 
     <section id="principal" class="d-flex">
-        <div class="container align-self-center">
+        <div class="container">
             <div class="row">
-                <div class="col-md-6 entradas">
+                <div class="col-md-5">
+                    <form id="origem" class="form-inline">
+                        <label class="sr-only">Não terminal</label>
+                        <input type="text" class="form-control" id="simbolo1" style="max-width: 50px;">
+                      
+                        <label class="sr-only">Símbolo</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-arrow-right"></i>
+                            </div>
+                          </div>
+                          <input type="text" class="form-control" id="simbolo2" style="max-width: 150px;">
+                        </div>
+                    </form>
 
+                    <form id="destino"></form>
+                    
+                    <button type="button" class="mt-2 btn btn-outline-dark d-block" style="width:240px" onlick="addInput()">+</button>
 
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-2 mt-5">
                         <input type="text" id="test" class="form-control" placeholder="Digite a palavra">
                         <div class="input-group-append">
                             <button id="testaGramatica" class="btn btn-outline-secondary" type="button">
@@ -59,6 +76,10 @@
 
             </div>
         </div>
+    </section>
+
+    <section>
+        
     </section>
 
     <script src="./script.js"></script>
