@@ -42,3 +42,10 @@ h1 {
     text-transform: uppercase;
 
 }
+
+th {
+    color: white;
+    font-family: Courier, Arial, Helvetica, sans-serif;
+    font-size: small;
+    text-transform: uppercase;
+}

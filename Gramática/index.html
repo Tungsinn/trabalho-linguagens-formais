@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- HTML5Shiv -->
     <!--[if lt IE 9]>
@@ -40,26 +40,40 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <form id="origem" class="form-inline">
-                        <label class="sr-only">Não terminal</label>
-                        <input type="text" class="form-control" id="simbolo1" style="max-width: 50px;">
-                      
-                        <label class="sr-only">Símbolo</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fa fa-arrow-right"></i>
-                            </div>
-                          </div>
-                          <input type="text" class="form-control" id="simbolo2" style="max-width: 150px;">
-                        </div>
-                    </form>
+                    <table id="tabela">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Variável
+                                </th>
+                                <th>
+                                    Regra
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="var">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" style="max-width: 50px;">
+                                        <div class="input-group-append">
+                                          <span class="input-group-text">
+                                            <i class="fa fa-arrow-right"></i>
+                                          </span>
+                                        </div>
+                                      </div>
+                                </td>
 
-                    <!-- Essa div tava aqui pra receber o clone da div #origim, por isso que o botão e o outro
-                    input ficavam embaixo automaticamente. Mas pode fazer do teu jeito mesmo -->
-                    <form id="destino"></form>
+                                <td class="rule">
+                                    <input type="text" class="form-control" style="max-width: 150px;">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     
-                    <button type="button" class="mt-2 btn btn-outline-dark d-block" style="width:240px" onlick="addInput()">+</button>
+                    <button id="buttonPlus" type="button" class="mt-2 btn btn-outline-dark d-block" style="width:240px" data-toggle="tooltip" data-placement="top" title="Nova linha">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
 
                     <div class="input-group mb-2 mt-5">
                         <input type="text" id="test" class="form-control" placeholder="Digite a palavra">
