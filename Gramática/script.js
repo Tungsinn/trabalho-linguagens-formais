@@ -7,6 +7,11 @@ let todasRegras = []
 let posicaoteste = 0
 let aux, posicaotesteaux
 
+function iniciaS() {
+    let s = document.getElementById("var0")
+    s.value = "S"
+}
+
 function addInput() {
     let tabela = document.getElementById('tabela');
     let NumerodeLinhas = tabela.rows.length
@@ -82,8 +87,6 @@ function testeSupremo(regra, linha, posicao, posicaoteste){
 }
 
 function pegaValoresInput(){
-    let s = document.getElementById("var0")
-    s.value = "S"
     let variavel, regra;
 
     for (i=0; i < count; i++){
