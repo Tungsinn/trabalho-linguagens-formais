@@ -32,19 +32,33 @@ function procurarProximaRegra(letra, posicao){
 }
 
 function testeSupremo(regra, linha, posicao, posicaoteste){
-    let novalinha
+    let novalinha, word 
 
     if(posicao >= regra.length)
         return false
+    if(regra === 'ε' && entradaUser.length === posicaoteste){
+        aux = 1 
+        return true
+    }  
 
     if(regra[posicao] === regra[posicao].toUpperCase()){
         novalinha = procurarProximaRegra(regra[posicao], linha)
-        if(regra.length-1 === posicao){    
+        if(regra.length-1 === posicao){  
+            word = todasRegras[novalinha].Regra
+            if(word === 'ε' && entradaUser.length === posicaoteste){
+                aux = 1 
+                return true
+            }  
             if(testeSupremo(todasRegras[novalinha].Regra, novalinha, 0, posicaoteste))
                 return true    
             else{
                 novalinha = procurarProximaRegra(regra[posicao], novalinha)
                 while(novalinha != -1){
+                    word = todasRegras[novalinha].Regra
+                    if(word === 'ε' && entradaUser.length-1 === posicaoteste){
+                        aux = 1 
+                        return true
+                    } 
                     if(testeSupremo(todasRegras[novalinha].Regra, novalinha, 0, posicaoteste))
                         return true
                     novalinha = procurarProximaRegra(regra[posicao], novalinha)
@@ -53,6 +67,12 @@ function testeSupremo(regra, linha, posicao, posicaoteste){
             }     
         }
         else{
+            word = todasRegras[novalinha].Regra
+            if(word === 'ε'){
+                if(testeSupremo(regra, linha, posicao+1, posicaoteste)){
+                    return true
+                }
+            }
             if(testeSupremo(todasRegras[novalinha].Regra, novalinha, 0, posicaoteste)){
                 posicaoteste = posicaotesteaux
                 return testeSupremo(regra, linha, posicao+1, posicaoteste+1)
@@ -60,6 +80,12 @@ function testeSupremo(regra, linha, posicao, posicaoteste){
             else{
                 novalinha = procurarProximaRegra(regra[posicao], novalinha)
                 while(novalinha != -1){
+                    word = todasRegras[novalinha].Regra
+                    if(word === 'ε'){
+                        if(testeSupremo(regra, linha, posicao+1, posicaoteste)){
+                            return true
+                        }
+                    }
                     if(testeSupremo(todasRegras[novalinha].Regra, novalinha, 0, posicaoteste)){
                         posicaoteste = posicaotesteaux
                         return testeSupremo(regra, linha, posicao+1, posicaoteste+1)
