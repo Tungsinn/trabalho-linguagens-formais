@@ -5,7 +5,7 @@ let entradaUser = entradaTeste.value
 let count = 1
 let todasRegras = []
 let posicaoteste = 0
-let aux, posicaotesteaux
+let aux, posicaotesteaux, mesmagramatica
 
 function iniciaS() {
     let s = document.getElementById("var0")
@@ -24,6 +24,10 @@ function addInput() {
 } 
 
 function procurarProximaRegra(letra, posicao){
+    if(todasRegras[posicao].Variavel === letra && mesmagramatica===0){
+        mesmagramatica = 1
+        return posicao
+    }
     for(i = posicao+1; i< count; i++){
         if(todasRegras[i].Variavel === letra)
             return i;
@@ -34,14 +38,15 @@ function procurarProximaRegra(letra, posicao){
 function testeSupremo(regra, linha, posicao, posicaoteste){
     let novalinha, word 
 
-    if(posicao >= regra.length || posicaoteste >= entradaUser.length)
-        return false
     if(regra === 'ε' && entradaUser.length === posicaoteste){
         aux = 1 
         return true
     }  
+    if(posicao >= regra.length || posicaoteste >= entradaUser.length)
+        return false
 
     if(regra[posicao] === regra[posicao].toUpperCase()){
+        mesmagramatica = 0
         novalinha = procurarProximaRegra(regra[posicao], linha)
         if(regra.length-1 === posicao){  
             word = todasRegras[novalinha].Regra
