@@ -34,7 +34,7 @@ function procurarProximaRegra(letra, posicao){
 function testeSupremo(regra, linha, posicao, posicaoteste){
     let novalinha, word 
 
-    if(posicao >= regra.length)
+    if(posicao >= regra.length || posicaoteste >= entradaUser.length)
         return false
     if(regra === 'ε' && entradaUser.length === posicaoteste){
         aux = 1 
