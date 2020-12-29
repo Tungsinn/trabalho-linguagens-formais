@@ -101,14 +101,17 @@ function pegaValoresInput(){
         if(todasRegras[i].Variavel === 'S'){
             aux = 0
             if(testeSupremo(todasRegras[i].Regra, 0, 0, 0) && aux ==1){
-                console.log("Deu Certo!")
+                entradaTeste.style.background = "#6fc155"
+                entradaTeste.style.color = "#034006"
                 break
             }                
         }
     }
 
-    if(aux != 1)
-        console.log("Deu Errado!")
+    if(aux != 1){
+        entradaTeste.style.background = "#c15d55"
+        entradaTeste.style.color = "#400803"
+    }
 }
 
 addInputButton.addEventListener('click', addInput)
