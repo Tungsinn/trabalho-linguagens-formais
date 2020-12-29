@@ -42,7 +42,7 @@ function testeSupremo(regra, linha, posicao, posicaoteste){
         aux = 1 
         return true
     }  
-    if(posicao >= regra.length || posicaoteste >= entradaUser.length)
+    if(posicao > regra.length || posicaoteste > entradaUser.length)
         return false
 
     if(regra[posicao] === regra[posicao].toUpperCase()){
@@ -60,7 +60,7 @@ function testeSupremo(regra, linha, posicao, posicaoteste){
                 novalinha = procurarProximaRegra(regra[posicao], novalinha)
                 while(novalinha != -1){
                     word = todasRegras[novalinha].Regra
-                    if(word === 'ε' && entradaUser.length-1 === posicaoteste){
+                    if(word === 'ε' && entradaUser.length === posicaoteste){
                         aux = 1 
                         return true
                     } 
@@ -90,6 +90,7 @@ function testeSupremo(regra, linha, posicao, posicaoteste){
                         if(testeSupremo(regra, linha, posicao+1, posicaoteste)){
                             return true
                         }
+                        return false /// ATENCAO AQUI
                     }
                     if(testeSupremo(todasRegras[novalinha].Regra, novalinha, 0, posicaoteste)){
                         posicaoteste = posicaotesteaux
