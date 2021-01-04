@@ -2,6 +2,13 @@ const container = document.getElementById("automato");
 const botaoCriarEstado = document.getElementById("criar-estado")
 let aux = 0
 let count = 0
+let menu = {
+  selecionar: 0,
+  criaEstado: 1,
+  apagaEstado: 2,
+  criaTransicao: 4,
+  desfazer:5
+}
 
 var nodes = new vis.DataSet([ ]);
 
@@ -22,10 +29,10 @@ var edges = new vis.DataSet([
         shape: "circle",
         color: 'gray',
         font: {
-            size: 30,
+            size: 25,
             align: "center"
         },
-        margin: 20
+        margin: 15
     },
   };
 
@@ -44,6 +51,10 @@ function criarEstados(data) {
         })
         count++
     }
+}
+
+function addTransicao(){
+  
 }
 
 network.addEventListener('click', criarEstados)
