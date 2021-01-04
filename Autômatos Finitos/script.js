@@ -34,12 +34,13 @@ let network = new vis.Network(container, data, options);
 
 botaoCriarEstado.addEventListener('click', () => {aux = 1})
 
-function criarEstados() {
+function criarEstados(data) {
     if(aux == 1){
         nodes.add({
             id: count,
             label: `q${count}`,
-            
+            x: data.pointer.canvas.x,
+            y: data.pointer.canvas.y
         })
         count++
     }
