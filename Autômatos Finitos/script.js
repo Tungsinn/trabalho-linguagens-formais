@@ -1,29 +1,23 @@
-const container = document.getElementById("automato");
-const botaoCriarEstado = document.getElementById("criar-estado")
-let aux = 0
-let count = 0
-let menu = {
-  selecionar: 0,
-  criaEstado: 1,
+const container = document.getElementById("automato");    
+let count = 0       
+let menu = {        // Todos os Botoes do Menu Superior
+  selecionar: 0,  
+  criaEstado: 1, 
   apagaEstado: 2,
-  criaTransicao: 4,
-  desfazer:5
+  criaTransicao: 3,
+  desfazer:4
 }
+let opcaoAtual = menu.selecionar
 
-var nodes = new vis.DataSet([ ]);
+var nodes = new vis.DataSet([ ])   // As Bolinhas
+var edges = new vis.DataSet([ ])   // As Transições
 
-  // create an array with edges
-var edges = new vis.DataSet([
-   // { from: 1, to: 3 },
-]);
-
-  // create a network
-  var data = {
+var data = {
     nodes: nodes,
     edges: edges,
-  };
+};
 
-  var options = {
+var options = {           // A formatação dos Nós, formato circulo, cor cinza, etc
     nodes: {
         physics: false,
         shape: "circle",
@@ -34,27 +28,33 @@ var edges = new vis.DataSet([
         },
         margin: 15
     },
-  };
+};
 
 
 let network = new vis.Network(container, data, options);
 
-botaoCriarEstado.addEventListener('click', () => {aux = 1})
+// Criando Eventos de Click no Botao. Assim, quando clicado será armazenado um determinado 
+// numero na variavel e q
+document.getElementById("selecionar").addEventListener('click', () => {opcaoAtual = 0})
+document.getElementById("criar-estado").addEventListener('click', () => {opcaoAtual = 1})
+document.getElementById("apagar").addEventListener('click', () => {opcaoAtual = 2})
+document.getElementById("transicao").addEventListener('click', () => {opcaoAtual = 3})
+document.getElementById("desfazer").addEventListener('click', () => {opcaoAtual = 4})
 
-function criarEstados(data) {
-    if(aux == 1){
+function menuEscolha(data){
+    switch(opcaoAtual){
+      case menu.criaEstado:
         nodes.add({
-            id: count,
-            label: `q${count}`,
-            x: data.pointer.canvas.x,
-            y: data.pointer.canvas.y
+          label: `q${count}`,
+          x: data.pointer.canvas.x,
+          y: data.pointer.canvas.y
         })
         count++
+        break
+
+      case menu.criaTransicao:
+        network.addEdgeMode();  
     }
 }
 
-function addTransicao(){
-  
-}
-
-network.addEventListener('click', criarEstados)
+network.addEventListener('click', data => {menuEscolha(data)} )
