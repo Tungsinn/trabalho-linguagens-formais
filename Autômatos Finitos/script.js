@@ -20,7 +20,7 @@ var edges = new vis.DataSet([
     nodes: {
         physics: false,
         shape: "circle",
-        color: 'light',
+        color: 'gray',
         font: {
             size: 30,
             align: "center"
