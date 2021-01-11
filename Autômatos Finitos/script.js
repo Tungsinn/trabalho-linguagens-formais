@@ -4,13 +4,12 @@ let menu = {        // Todos os Botoes do Menu Superior
   selecionar: 0,  
   criaEstado: 1, 
   apagaEstado: 2,
-  criaTransicao: 3,
-  desfazer:4
+  criaTransicao: 3
 }
 let opcaoAtual = menu.selecionar
 
-var nodes = new vis.DataSet([ ])   // As Bolinhas
-var edges = new vis.DataSet([ ])   // As Transições
+let nodes = new vis.DataSet([ ])   // As Bolinhas
+let edges = new vis.DataSet([ ])   // As Transições
 
 var data = {
     nodes: nodes,
@@ -28,6 +27,31 @@ var options = {           // A formatação dos Nós, formato circulo, cor cinza
         },
         margin: 15
     },
+    edges: {
+        arrows: {
+            to: {
+                enabled: false,
+                scaleFactor: 1,
+                type: "arrow"
+            },
+            from: {
+                enabled: false,
+                scaleFactor: 1,
+                type: "arrow"
+            }
+          
+        },
+        font: {
+            align: "top",
+            color: "white",
+            size: 17,
+            strokeWidth: 1
+        },
+        width: 1
+    },
+    manipulation: {
+        enabled: false
+    }
 };
 
 
@@ -43,17 +67,26 @@ document.getElementById("desfazer").addEventListener('click', () => {opcaoAtual 
 
 function menuEscolha(data){
     switch(opcaoAtual){
-      case menu.criaEstado:
-        nodes.add({
-          label: `q${count}`,
-          x: data.pointer.canvas.x,
-          y: data.pointer.canvas.y
-        })
-        count++
-        break
+        case menu.selecionar:
 
-      case menu.criaTransicao:
-        network.addEdgeMode();  
+            break;
+
+        case menu.criaEstado:
+            nodes.add({
+            label: `q${count}`,
+            x: data.pointer.canvas.x,
+            y: data.pointer.canvas.y
+            })
+            count++;
+            break;
+        
+        case menu.apagaEstado:
+
+            break;
+
+        case menu.criaTransicao:
+            network.addEdgeMode();  
+            break;
     }
 }
 
