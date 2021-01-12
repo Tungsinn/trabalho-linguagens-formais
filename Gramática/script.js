@@ -6,6 +6,7 @@ let count = 1
 let todasRegras = []
 let posicaoteste = 0
 let aux, posicaotesteaux, mesmagramatica
+let estadoInicial
 
 function iniciaS() {
     let s = document.getElementById("var0")
