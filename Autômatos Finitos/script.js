@@ -159,13 +159,13 @@ function menuEscolha(data){
                     firstState = document.createElement("div")
                     firstState.innerHTML = `<button id="transicao" class="btn btn-lg btn-outline-secondary mr-3" type="button" data-toggle="tooltip" data-placement="top" 
                     title="Estado Inicial">
-                        <i class="fa fa-long-arrow-right"></i>    
+                    <i class="fa fa-play" aria-hidden="true"></i>    
                     </button>`
                     form.appendChild(firstState)
                     lastState = document.createElement("div")
                     lastState.innerHTML = `<button id="transicao" class="btn btn-lg btn-outline-secondary mr-3" type="button" data-toggle="tooltip" data-placement="top" 
                     title="Estado Final">
-                        <i class="fa fa-long-arrow-right"></i>    
+                    <i class="fa fa-stop-circle-o" aria-hidden="true"></i>    
                     </button>`
                     form.appendChild(lastState)
                 }
