@@ -35,7 +35,7 @@ function procurarProximaRegra(letra, posicao){
     return -1
 }
 
-function testeSupremo(regra, linha, posicao, posicaoteste){
+function testeGramatica(regra, linha, posicao, posicaoteste){
     let novalinha, word 
 
     if(regra === 'ε' && entradaUser.length === posicaoteste){
@@ -54,7 +54,7 @@ function testeSupremo(regra, linha, posicao, posicaoteste){
                 aux = 1 
                 return true
             }  
-            if(testeSupremo(todasRegras[novalinha].Regra, novalinha, 0, posicaoteste))
+            if(testeGramatica(todasRegras[novalinha].Regra, novalinha, 0, posicaoteste))
                 return true    
             else{
                 novalinha = procurarProximaRegra(regra[posicao], novalinha)
@@ -64,7 +64,7 @@ function testeSupremo(regra, linha, posicao, posicaoteste){
                         aux = 1 
                         return true
                     } 
-                    if(testeSupremo(todasRegras[novalinha].Regra, novalinha, 0, posicaoteste))
+                    if(testeGramatica(todasRegras[novalinha].Regra, novalinha, 0, posicaoteste))
                         return true
                     novalinha = procurarProximaRegra(regra[posicao], novalinha)
                 }
@@ -74,27 +74,27 @@ function testeSupremo(regra, linha, posicao, posicaoteste){
         else{
             word = todasRegras[novalinha].Regra
             if(word === 'ε'){
-                if(testeSupremo(regra, linha, posicao+1, posicaoteste)){
+                if(testeGramatica(regra, linha, posicao+1, posicaoteste)){
                     return true
                 }
             }
-            if(testeSupremo(todasRegras[novalinha].Regra, novalinha, 0, posicaoteste)){
+            if(testeGramatica(todasRegras[novalinha].Regra, novalinha, 0, posicaoteste)){
                 posicaoteste = posicaotesteaux
-                return testeSupremo(regra, linha, posicao+1, posicaoteste+1)
+                return testeGramatica(regra, linha, posicao+1, posicaoteste+1)
             }
             else{
                 novalinha = procurarProximaRegra(regra[posicao], novalinha)
                 while(novalinha != -1){
                     word = todasRegras[novalinha].Regra
                     if(word === 'ε'){
-                        if(testeSupremo(regra, linha, posicao+1, posicaoteste)){
+                        if(testeGramatica(regra, linha, posicao+1, posicaoteste)){
                             return true
                         }
                         return false /// ATENCAO AQUI
                     }
-                    if(testeSupremo(todasRegras[novalinha].Regra, novalinha, 0, posicaoteste)){
+                    if(testeGramatica(todasRegras[novalinha].Regra, novalinha, 0, posicaoteste)){
                         posicaoteste = posicaotesteaux
-                        return testeSupremo(regra, linha, posicao+1, posicaoteste+1)
+                        return testeGramatica(regra, linha, posicao+1, posicaoteste+1)
                     }
                     novalinha = procurarProximaRegra(regra[posicao], novalinha)
                 }
@@ -111,7 +111,7 @@ function testeSupremo(regra, linha, posicao, posicaoteste){
                 posicaotesteaux = posicaoteste
                 return true
             }
-            return testeSupremo(regra, linha, posicao+1, posicaoteste+1)
+            return testeGramatica(regra, linha, posicao+1, posicaoteste+1)
         }
         else return false;
     }
@@ -132,7 +132,7 @@ function pegaValoresInput(){
     for(i=0; i<todasRegras.length; i++){
         if(todasRegras[i].Variavel === 'S'){
             aux = 0
-            if(testeSupremo(todasRegras[i].Regra, 0, 0, 0) && aux ==1){
+            if(testeGramatica(todasRegras[i].Regra, 0, 0, 0) && aux ==1){
                 entradaTeste.style.background = "#6fc155"
                 entradaTeste.style.color = "#034006"
                 break
