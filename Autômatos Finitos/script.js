@@ -75,31 +75,6 @@ function addTransicao(edgeData, callback) {
     }
 }
 
-function addedge(edgeData, callback) {
-
-    let data = edges.get({
-        filter: function(item) {
-            return item.from === edgeData.from && item.to === edgeData.to;
-        }
-    });
-    console.log(data.length )
-
-    let token = prompt("Digite o valor da transição", "");
-    if (data.length > 0) {
-        edges.update({
-            id: data[0].id,
-            label: data[0].label + ", " + token
-        });
-        callback(null);
-    } else {
-        edgeData.id = edgeData.from + "-" + edgeData.to;
-        edgeData.arrows = "to";
-        edgeData.label = token;
-        callback(edgeData);
-        network.addEdgeMode();
-    }
-}
-
 var options = {           // A formatação dos Nós, formato circulo, cor cinza, etc
     nodes: {
         physics: false,
@@ -140,7 +115,6 @@ var options = {           // A formatação dos Nós, formato circulo, cor cinza
     manipulation: {
         enabled: false, 
         addEdge: addTransicao
-
     }
 };
 
@@ -223,7 +197,6 @@ function menuEscolha(data){
             break;
         case menu.criaEstado:
             if((temporario = reusandoElementosRemovidos()) === -1){        
-            if((temporario = reusandoElementosRemovidos()) === -1){
                 NumberID[count] = nodes.add({
                     label: `q${count}`,
                     x: data.pointer.canvas.x,
