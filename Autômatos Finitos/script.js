@@ -17,7 +17,7 @@ var data = {
     nodes: nodes,
     edges: edges,
 };
-let firstState, lastState, estadoInicial = undefined, estadoFinal =[]
+let firstState, lastState, estadoInicial = "undefined", estadoFinal =[]
 
 function findToState(to){
     const regex = new RegExp(to)
@@ -170,7 +170,10 @@ function menuEscolha(data){
                     form.appendChild(lastState)
                 }
                 firstState.addEventListener('click', ()=>{
+                    if(estadoInicial != "undefined")
+                        nodes.update({id: NumberID[estadoInicial], color: "gray"});
                     estadoInicial = id
+                    nodes.update({id: data.nodes[0], color: "green"});
                     form.removeChild(lastState)
                     form.removeChild(firstState)
                     firstState = undefined
@@ -178,12 +181,12 @@ function menuEscolha(data){
                 })
                 lastState.addEventListener('click', ()=>{
                     estadoFinal[estadoFinal.length] = id
+                    nodes.update({id: data.nodes[0], color: "orange"});
                     form.removeChild(lastState)
                     form.removeChild(firstState)
                     firstState = undefined
                     lastState = undefined
                 })
-                console.log(estadoFinal)
             }
             else{
                 aux = 0
@@ -234,21 +237,65 @@ let entradaTeste = document.getElementById('test')
 let userInput
 const testButton = document.getElementById("testaExpressao")
 
+function comparaEstadoInput(posicaoEntrada, posicaoAF){
+    for(i=0; i<caminho[posicaoAF].Valor.length; i++){
+        if(userInput[posicaoEntrada] === caminho[posicaoAF].Valor[i])
+            return caminho[posicaoAF].Para[i]
+    }
+    return -1
+}
+
+function testaEstadoFinal(estadoAtual){
+    for(i=0; i<estadoFinal.length; i++){
+        if(estadoFinal[i]===estadoAtual)
+            return true
+    }
+    return false
+}
+
+function testeAutomato(posicaoEntrada, posicaoAF){
+    let proxAF
+    if(posicaoEntrada === userInput.length){
+        console.log('here')
+        if(testaEstadoFinal(posicaoAF))
+            return true
+        else
+            return false
+    }
+    proxAF = comparaEstadoInput(posicaoEntrada, posicaoAF, 0)
+    console.log(proxAF)
+    if(proxAF !== -1){
+        if(testeAutomato(posicaoEntrada+1, proxAF)){
+            return true
+        }
+        else{
+            if((proxAF = comparaEstadoInput(posicaoEntrada, posicaoAF, proxAF)) !== -1){
+                return testeAutomato(posicaoEntrada+1, proxAF)
+            }
+            else 
+                return false
+        }
+    }
+    else if(posicaoAF === estadoInicial){
+        return false
+    }
+}
+
 function expressionTest(){
     userInput = entradaTeste.value
-    console.log(userInput)
-    let auxiliar = 0
+    let posicaoEntrada = 0
     let isValid = false
     if(estadoInicial === undefined || isEmpty(estadoFinal) ){
         alert("Defina Um Estado Inicial e Um Estado Final antes do teste")
     }
     else{
-        while(auxiliar < caminho[estadoInicial].Valor.length){
-            if(caminho[estadoInicial].Valor[auxiliar] === userInput[auxiliar]){
-                auxiliar++
-    
-            }
-            auxiliar++
+        if(testeAutomato(posicaoEntrada, estadoInicial)){
+            entradaTeste.style.background = "#6fc155"
+            entradaTeste.style.color = "#034006"
+        }
+        else{
+            entradaTeste.style.background = "#c15d55"
+            entradaTeste.style.color = "#400803"
         }
     }
 }
