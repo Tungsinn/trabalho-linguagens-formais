@@ -49,3 +49,72 @@ th {
     font-size: small;
     text-transform: uppercase;
 }
+
+/* __________ MEDIA QUERIES __________*/
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+
+    nav.navbar-transparente {
+        padding: 30px 0px;
+    }
+
+    h1 {
+        margin: 30px;
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .backButton {
+        margin-bottom: 30px;
+        margin-left: 30px;
+    }
+
+    #principal {
+        margin-top: 275px;
+        text-align: center;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 718px) {
+    nav.navbar-transparente {
+        padding: 30px 0px;
+    }
+
+    h1 {
+        margin: 30px;
+        text-align: center;
+    }
+
+    .backButton {
+        margin-bottom: 30px;
+        margin-left: 30px;
+    }
+
+    #principal {
+        margin-top: 275px;
+        text-align: center;
+    }
+}
+
+/* Medium devices (tablets, 719px and up) */
+@media (min-width: 719px) and (max-width: 991.98px) {
+
+    nav.navbar-transparente {
+        padding: 30px 0px;
+    }
+
+    h1 {
+        margin: 50px;
+    }
+
+    .backButton {
+        margin-bottom: 30px;
+    }
+
+    #principal {
+        margin-top: 275px;
+        text-align: center;
+    }
+}
